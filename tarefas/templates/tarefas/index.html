@@ -1,0 +1,19 @@
+{% if lista_tarefas %}
+    <ul>
+    {% for tarefa in lista_tarefas %}
+        <li>{{ tarefa.texto_tarefa }} -
+        <a href="{% url 'tarefas:deletar' tarefa.id%}">apagar</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Nenhuma Tarefa</p>
+{% endif %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'tarefas:index'%}" method="post">
+{% csrf_token %}
+<label for="texto_tarefa">Nova Tarefa: </label>
+<input type="text" name="texto_tarefa" id="texto_tarefa" />
+<input type="submit" value="Salvar" />
+</form>
