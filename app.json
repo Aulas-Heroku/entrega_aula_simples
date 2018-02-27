@@ -1,6 +1,8 @@
 {
   "name": "entrega_aula_simples",
-  "scripts": {},
+  "scripts": {
+	"postdeploy": "python manage.py makemigrations && python manage.py migrate"
+  },
   "env": {
     "DEBUG": {
       "required": true
