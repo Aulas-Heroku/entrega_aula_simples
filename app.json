@@ -3,13 +3,6 @@
   "scripts": {
 	"postdeploy": "python manage.py makemigrations && python manage.py migrate"
   },
-  "environments": {
-    "test": {
-      "scripts": {
-        "test": "python manage.py test"
-      }
-    }
-  },
   "env": {
     "DEBUG": {
       "required": true
@@ -31,5 +24,18 @@
     {
       "url": "heroku/python"
     }
-  ]
+  ],
+  "environments": {
+    "test": {
+      "DEBUG": {
+        "required": true
+      },
+      "PAPERTRAIL_API_TOKEN": {
+        "required": true
+      },
+      "scripts": {
+        "test": "python migrate.py test"
+      }
+    }
+  }
 }
